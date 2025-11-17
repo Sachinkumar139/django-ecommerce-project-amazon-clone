@@ -1,10 +1,12 @@
 Django>=4.2,<5.0
 djangorestframework>=3.14
-django-cors-headers>=3.13
+django-cors-headers>=4.3
 Pillow>=10.0
 django-ckeditor>=6.4
 django-allauth>=0.54
-django-extensions>=3.3
+django-crispy-forms>=2.1
+crispy-bootstrap5>=0.7
+django-extensions>=3.2
+whitenoise>=6.5
 gunicorn>=21.0
-psycopg2-binary>=2.9      # if you might use PostgreSQL later
-whitenoise>=7.0           # for static file serving
+requests>=2.31
