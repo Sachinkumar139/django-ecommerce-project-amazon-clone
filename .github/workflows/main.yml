@@ -1,1 +1,18 @@
+---
+name: Django-ecommerce
 
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+jobs:
+    test:
+        runs-on:
+            - self-hosted
+        steps: 
+        - name: Checkout repository
+          uses: actions/checkout@v4
+                                               
