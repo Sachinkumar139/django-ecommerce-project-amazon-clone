@@ -32,3 +32,5 @@ jobs:
            aws-region: ap-south-1
         - name: Verify AWS Authentication
           run: aws sts get-caller-identity
+        - name: Deploy static site to s3 bucket
+          run: aws s3 sync . s3://Django-ecommerce --delete
