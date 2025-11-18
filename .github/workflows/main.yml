@@ -46,5 +46,3 @@ jobs:
             region: ${{ secrets.AWS_REGION }}
             deployment_package: deploy.zip
             version_label: "build-${{ github.run_number }}"
-
-            sachin
