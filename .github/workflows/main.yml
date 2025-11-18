@@ -34,3 +34,7 @@ jobs:
           run: aws sts get-caller-identity
         - name: Deploy static site to s3 bucket
           run: aws s3 sync . s3://django-sachin --delete
+        - name: Download Beanstalk Code from S3
+          run: |
+              aws s3 cp s3://django-sachin/applications/app-name/version.zip ./app.zip
+  
