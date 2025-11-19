@@ -8,6 +8,6 @@ terraform {
 }
 
 # Configure the AWS Provider
-provider "aws" {
+provider "aws"  {
   region = "ap-south-1"
 }
