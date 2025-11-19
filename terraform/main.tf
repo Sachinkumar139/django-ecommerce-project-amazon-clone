@@ -28,7 +28,7 @@ resource "aws_subnet" "private_subnets" {
 resource "aws_instance" "ec2-instance" {
   ami = "ami-080b4e8311df57073"
   instance_type = "t2.micro"
-  subnet_id = length(var.network_info.public_subnets)
+  subnet_id = aws_subnet.public_subnets[0].id
   key_name = "byaws"
   associate_public_ip_address = true
 
