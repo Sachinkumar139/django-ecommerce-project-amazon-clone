@@ -25,14 +25,14 @@ resource "aws_subnet" "private_subnets" {
   }
   depends_on = [aws_vpc.main]
 }
-resource "aws_instance" "ec2-instance" {
-  ami = "ami-080b4e8311df57073"
-  instance_type = "t2.micro"
-  subnet_id = aws_subnet.public_subnets[0].id
-  key_name = "byaws"
-  associate_public_ip_address = true
-
-  tags = {
-    Name = "ubuntu"
-  }
+resource "aws_elastic_beanstalk_application" "django_app" {
+  name        = "django-ecommerce-project-amazon-clone"
+  description = "Django Elastic Beanstalk app"
 }
+
+resource "aws_elastic_beanstalk_environment" "django_env" {
+  name                = "django-env"
+  application         = aws_elastic_beanstalk_application.django_app.name
+  solution_stack_name = "64bit Amazon Linux 2 v3.9.0 running Python 3.11"
+}
+

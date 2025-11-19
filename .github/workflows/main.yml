@@ -24,11 +24,7 @@ jobs:
 
         - name: Run tests
           run: python manage.py test
-        
-        - name: Setup Terraform
-          uses: hashicorp/setup-terraform@v3
-          with:
-            terraform_version: latest
+
         - name: Configure AWS Credentials
           uses: aws-actions/configure-aws-credentials@v4
           with:
@@ -38,23 +34,7 @@ jobs:
            
         - name: Verify AWS Authentication
           run: aws sts get-caller-identity   
-        
-        - name: Terraform Init
-          working-directory: terraform
-          run: terraform init
 
-        - name: Terraform Validate
-          working-directory: terraform
-          run: terraform validate
-
-        - name: Terraform Plan
-          working-directory: terraform
-          run: terraform plan -out=tfplan
-
-        - name: Terraform Apply
-          if: github.ref == 'refs/heads/main'
-          working-directory: terraform
-          run: terraform apply -auto-approve tfplan
         - name: Create ZIP File
           run: |
             zip -r deploy.zip . -x "*.git*"
