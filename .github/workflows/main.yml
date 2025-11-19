@@ -34,7 +34,7 @@ jobs:
           run: aws sts get-caller-identity
         - name: Create ZIP File
           run: |
-            zip -r deploy.zip . -x "*.git*" -x "*/venv/*"
+            zip -r deploy.zip . -x "*.git*"
   
         - name: Deploy to Elastic Beanstalk
           uses: einaregilsson/beanstalk-deploy@v22
@@ -44,6 +44,6 @@ jobs:
             application_name: ${{ secrets.EB_APPLICATION_NAME }}
             environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
             region: ${{ secrets.AWS_REGION }}
-            
+            version: 1.0
             deployment_package: deploy.zip
             version_label: "build-${{ github.run_number }}"
