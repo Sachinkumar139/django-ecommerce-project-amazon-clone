@@ -30,7 +30,7 @@ resource "aws_instance" "ec2-instance" {
   instance_type = "t2.micro"
   subnet_id = aws_subnet.public_subnets.id
   key_name = "byaws"
-  associate_public_ip_address = True
+  associate_public_ip_address = true
 
   tags = {
     Name = "ubuntu"
