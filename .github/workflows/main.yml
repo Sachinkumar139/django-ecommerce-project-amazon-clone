@@ -38,14 +38,5 @@ jobs:
         - name: Create ZIP File
           run: |
             zip -r deploy.zip . -x "*.git*"
-  
-        - name: Deploy to Elastic Beanstalk
-          uses: einaregilsson/beanstalk-deploy@v22
-          with:
-            aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            application_name: ${{ secrets.EB_APPLICATION_NAME }}
-            environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
-            region: ${{ secrets.AWS_REGION }}
-            deployment_package: deploy.zip
-            version_label: "build-${{ github.run_number }}"
+        - name: Deploy to S3
+          run: aws s3 sync ./build s3://my-bucket --delete    
