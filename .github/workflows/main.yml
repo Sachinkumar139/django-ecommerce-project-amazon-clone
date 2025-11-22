@@ -38,5 +38,3 @@ jobs:
         - name: Create ZIP File
           run: |
             zip -r deploy.zip . -x "*.git*"
-        - name: Deploy to S3
-          run: aws s3 sync ./build s3://my-bucket --delete    
